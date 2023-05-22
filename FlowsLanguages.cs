@@ -16,20 +16,22 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-using Proliferation.Fatum;
+using System.Collections;
 
 namespace Proliferation.LanguageAdapters
 {
-    public interface IntLanguage
+    public class FlowsLanguages
     {
-        string getVersion();
-        string getName();
-        short initialize(string code, out string CompilationOutput);
-        void addVariable(string varname, string value);
-        void addVariable(string varname, Tree value);
-        void dispose();
-        short execute(out string ExecutionOutput);
-        short document(out string ExecutionOutput);
-        void setCallback(EventHandler handler);
+        public ArrayList Languages = new ArrayList();
+
+        public void registerLanguage(IntLanguage language)
+        {
+            Languages.Add(language);
+        }
+
+        public void deregisterLanguage(IntLanguage language)
+        {
+            Languages.Remove(language);
+        }
     }
 }

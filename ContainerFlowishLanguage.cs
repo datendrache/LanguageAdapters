@@ -1,15 +1,28 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Basic;
-using FatumCore;
+﻿//   Language Adapters -- Allows for multiple embedded languages
+//
+//   Copyright (C) 2003-2023 Eric Knight
+//   This software is distributed under the GNU Public v3 License
+//
+//   This program is free software: you can redistribute it and/or modify
+//   it under the terms of the GNU General Public License as published by
+//   the Free Software Foundation, either version 3 of the License, or
+//   (at your option) any later version.
 
-namespace PhlozLanguages
+//   This program is distributed in the hope that it will be useful,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//   GNU General Public License for more details.
+
+//   You should have received a copy of the GNU General Public License
+//   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+using System.Collections;
+using Proliferation.Flowish;
+using Proliferation.Fatum;
+
+namespace Proliferation.LanguageAdapters
 {
-    public class ContainerPhlozBasic100 : IntLanguage
+    public class ContainerFlowish : IntLanguage
     {
         IntFunction MainFunction = null;
         IntFunction DocumentFunction = null;
@@ -19,7 +32,7 @@ namespace PhlozLanguages
 
         EventHandler documentcallback = null;
 
-        ~ContainerPhlozBasic100()
+        ~ContainerFlowish()
         {
             MainFunction = null;
             Runtime = null;
@@ -37,7 +50,7 @@ namespace PhlozLanguages
 
         public string getName()
         {
-            return "PhlozBasic";
+            return "Flowish";
         }
 
         public short initialize(string code, out string CompilationOutput)
@@ -48,7 +61,7 @@ namespace PhlozLanguages
                 varStack.Clear();
             }
             varStack = new ArrayList();
-            Runtime = CreatePhlozBasic100Runtime(new CallbackEventHandler(callBackHandler), code, out errorCode, out CompilationOutput);
+            Runtime = CreateFlowishRuntime(new CallbackEventHandler(callBackHandler), code, out errorCode, out CompilationOutput);
             if (errorCode==null)
             {
                 MainFunction = IntFunction.locateFunction("main", Runtime.programAssembly.Functions);
@@ -155,7 +168,7 @@ namespace PhlozLanguages
             }
         }
 
-        private IntRuntime CreatePhlozBasic100Runtime(CallbackEventHandler M, string code, out IntError errorCode, out string CompilationOutput)
+        private IntRuntime CreateFlowishRuntime(CallbackEventHandler M, string code, out IntError errorCode, out string CompilationOutput)
         {
             IntRuntime runtime = new IntRuntime();
             string compilerDetails = "";

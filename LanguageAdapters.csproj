@@ -4,11 +4,31 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	<Title>Language Adapters</Title>
+    <Description>Adapters for inline languages</Description>
+	<Authors>Datendrache</Authors>
+    <Copyright>Copyright 2003-2023 by Eric Knight</Copyright>
+    <AssemblyName>Proliferation.LanguageAdapters</AssemblyName>
+    <Version>1.0.2</Version>
+    <PackageProjectUrl>https://github.com/datendrache/LanguageAdapters</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/datendrache/LanguageAdapters.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Proliferation; Languages</PackageTags>
+    <PackageReleaseNotes>Updating to Fatum 1.0.2</PackageReleaseNotes>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FatumCore" Version="1.0.0" />
-    <PackageReference Include="Flowish" Version="1.0.0" />
+    <None Include="C:\Users\daten\Downloads\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Proliferation.Fatum" Version="1.0.2" />
+    <PackageReference Include="Proliferation.Flowish" Version="1.0.2" />
   </ItemGroup>
 
 </Project>
